@@ -1,0 +1,2 @@
+module GossipProjectHelper
+end
