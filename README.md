@@ -1,24 +1,41 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# XOXO Gossip Girl
 
-Things you may want to cover:
+This project takes a database of gossips and stocks them on a website. They are accessed once the user puts in their name on the landing page. 
 
-* Ruby version
 
-* System dependencies
+## Authors
 
-* Configuration
+- [@katamaric](https://www.github.com/katamaric)
+- [@artem-ine](https://www.github.com/artem-ine)
 
-* Database creation
 
-* Database initialization
+## Run Locally
 
-* How to run the test suite
+Assuming you have postgres installed (if not, figure that out)!
 
-* Services (job queues, cache servers, search engines, etc.)
+Do a standard bundle install
 
-* Deployment instructions
+```bash
+  bundle install
+```
 
-* ...
+Initialize the migrations (if necessary, create a database first with rails db:create)
+
+```bash
+  rails db:migrate
+```
+
+Run the seed file to fill in the databse
+
+```bash
+  rails db:seed
+```
+
+Start the server. 
+
+```bash
+  rails server
+```
+
+You should be able to access it via your standard friendly http://localhost:3000/. Go apeshit!
