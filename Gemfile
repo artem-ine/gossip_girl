@@ -73,3 +73,4 @@ end
 
 gem 'bootstrap', '~> 5.1'
 gem 'faker'
+gem 'simple_form'

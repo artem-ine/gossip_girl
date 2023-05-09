@@ -1,11 +1,11 @@
 class WelcomeController < ApplicationController
   def greet
-    first_name = params[:name]
-    redirect_to welcome_first_name_path(first_name: first_name)
+    @id = params[:id]
+    redirect_to welcome_path(@id)
   end
 
-  def first_name
-    @first_name = params[:first_name]
+  def show
+    @id = params[:id]
     @gossips = Gossip.all
   end
 

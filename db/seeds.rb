@@ -8,9 +8,12 @@
 
 require 'faker'
 
+
 10.times do 
   city = City.create!(name: Faker::Nation.capital_city, zip_code: Faker::Address.postcode)
 end 
+
+User.create(first_name: "Anon", last_name: "Ymous", email: "anon@anon.com", description: "the secret i'll never tell", city: City.order("RANDOM()").first, age: "XX")
 
 10.times do 
   user = User.create!(
