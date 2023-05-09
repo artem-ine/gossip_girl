@@ -35,6 +35,13 @@
             <!-- About-->
             <section class="resume-section" id="about">
                 <div class="resume-section-content">
+
+                <% if flash[:success] %>
+                <div class="alert alert-success" role="alert">
+                  <%= flash[:success] %>
+                </div>
+                <% end %>
+
                       <h1 class="mb-0">
                           Welcome,
                           <span class="text-primary"><%= @id %></span>
