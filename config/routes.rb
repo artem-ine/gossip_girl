@@ -12,15 +12,8 @@ Rails.application.routes.draw do
   
   get '/team', to: 'gossip_project#team'
 
-  get 'welcome/:first_name', to: 'welcome#first_name', as: 'welcome_first_name'
-
-  get '/welcome', to: 'welcome#first_name', as: 'show_welcome_first_name'
-  
   resources :gossips
+  resources :welcome
   resources :users, only: [:show]
-
-  get 'gossips', to: 'welcome_first_name#gossips'
-  get 'gossips/:id', to: 'gossips#show', as: 'show_gossip'
-  get 'users/:id', to: 'users#show', as: 'show_user'
 
 end
