@@ -1,7 +1,7 @@
 
 # XOXO Gossip Girl
 
-This project takes a database of gossips and stocks them on a website. They are accessed once the user puts in their name on the landing page. 
+This project takes a database of gossips and stocks them on a website. They are accessed once the user puts in their name on the landing page. You can create a gossip via the index page, after inputing your name. 
 
 
 ## Authors
