@@ -55,7 +55,9 @@
                             <img class="card-img-top" src="<%= asset_path('one.jpg') %>" alt="Card image cap">
                               <div class="card-body">
                                 <h5 class="card-title"><%= gossip.title %></h5>
-                                <p class="card-text"><small class="text-muted">Posted by <%= link_to gossip.user.first_name, user_path(gossip.user) %>, in <%= link_to gossip.user.city.name, city_path(gossip.user.city_id) %></small></p>
+                                <p class="card-text"><small class="text-muted">Posted by <%= link_to gossip.user.first_name, user_path(gossip.user) %>, in <%= link_to gossip.user.city.name, city_path(gossip.user.city_id) %>. 
+                                <br/>
+                                It has <%= gossip.comments.count %> comment(s).</small></p>
                                 <%= link_to "Read more", gossip_path(gossip), class: "btn btn-primary" %>
                               </div>
                             </div>

@@ -63,7 +63,7 @@ end
 end
 
 
-25.times do |index|
+100.times do |index|
   user = User.order("RANDOM()").first
   gossip = Gossip.order("RANDOM()").last
   comment = Comment.create(
