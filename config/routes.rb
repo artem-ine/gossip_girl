@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   resources :gossips
   resources :welcome
+  resources :city
   resources :users, only: [:show]
 
 end

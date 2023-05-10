@@ -15,7 +15,7 @@ end
 
 User.create(first_name: "Anon", last_name: "Ymous", email: "anon@anon.com", description: "the secret i'll never tell", city: City.order("RANDOM()").first, age: "XX")
 
-10.times do 
+50.times do 
   user = User.create!(
     first_name: Faker::Name.unique.first_name,
     last_name: Faker::Name.unique.last_name,
@@ -27,7 +27,7 @@ User.create(first_name: "Anon", last_name: "Ymous", email: "anon@anon.com", desc
 end 
 
 gossips = []
-20.times do |index|
+100.times do |index|
   user = User.order("RANDOM()").first
   gossip = Gossip.create(
     title: Faker::Lorem.sentence(word_count: 2),
@@ -59,5 +59,16 @@ end
     content: Faker::Lorem.sentence(word_count: 3, supplemental: true, random_words_to_add: 10),
     recipient: recipient,
     sender: sender
+  )
+end
+
+
+50.times do |index|
+  user = User.order("RANDOM()").first
+  gossip = Gossip.order("RANDOM()").last
+  comment = Comment.create(
+    content: Faker::Lorem.sentence(word_count: 10, supplemental: true, random_words_to_add: 50),
+    user_id: user.id,
+    gossip_id: gossip.id
   )
 end

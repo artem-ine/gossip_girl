@@ -37,7 +37,7 @@
                 <div class="resume-section-content">
                       <h2 class="mb-0"><%= @gossip.title %></h1>
                       <div class="subheading mb-5">
-                        by <%= link_to @gossip.user.first_name, user_path(@gossip.user) %>
+                        by <%= link_to @gossip.user.first_name, user_path(@gossip.user) %>, from <%= link_to @gossip.user.city.name, city_path(@gossip.user.city_id)%>
                       </div>
                       <p class="lead mb-5"><%= @gossip.content %></p>
                   </div>
