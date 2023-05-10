@@ -1,10 +1,11 @@
-class CommentController < ApplicationController
+class CommentsController < ApplicationController
   def edit
     @id = params[:id]
     @comment = Comment.find(params[:id])
   end
 
   def new
+    @gossip = Gossip.find(params[:gossip_id])
     @comment = Comment.new(gossip_id: params[:gossip_id])
     render :new
   end
@@ -12,7 +13,7 @@ class CommentController < ApplicationController
   def create
     puts params.inspect
     @id = params[:id]
-    @comment = Comment.new(content: params[:content], user: User.find_by(first_name: "Anon"))
+    @comment = Comment.new(content: params[:content], user: User.find_by(first_name: "Anon"), gossip_id: params[:gossip_id])
   
     if @comment.save # essaie de sauvegarder en base @gossip
       redirect_to gossip_path(@comment.gossip_id), flash: { success: 'Comment was successfully created.' }

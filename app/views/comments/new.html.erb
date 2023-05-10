@@ -40,8 +40,8 @@
                         <span class="text-primary">Comment</span>
                     </h1>
                     <p class="lead mb-5">
-                    <%= form_with url: new_comment_path, method: :post do |form| %>
-
+                    <%= form_with url: comments_path, method: :post do |form| %>
+                          <%= form.hidden_field :gossip_id, value: @gossip.id %>
                         <% if @comment.errors.any? %>
                           <div class="alert alert-danger">
                             <ul>
@@ -52,8 +52,6 @@
                           </div>
                         <% end %>
                         
-                        <%= form.hidden_field :gossip_id, value: @comment.gossip_id %>
-
                         <%= form.label :content %>
                         <br/>
                         <%= form.text_area :content %>

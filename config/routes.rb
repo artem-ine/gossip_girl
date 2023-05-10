@@ -16,6 +16,6 @@ Rails.application.routes.draw do
   resources :welcome
   resources :city
   resources :users, only: [:show]
-  resources :comment
+  resources :comments
 
 end
