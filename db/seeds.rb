@@ -38,7 +38,7 @@ gossips = []
 end 
 
 tags = []
-10.times do |index|
+5.times do |index|
   gossip = Gossip.order("RANDOM()").first
   tag = Tag.create(title: ['bromance', 'hater', 'blabla', 'etc'].sample)
   tags << tag
@@ -63,7 +63,7 @@ end
 end
 
 
-50.times do |index|
+25.times do |index|
   user = User.order("RANDOM()").first
   gossip = Gossip.order("RANDOM()").last
   comment = Comment.create(

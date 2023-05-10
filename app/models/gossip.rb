@@ -7,17 +7,13 @@ class Gossip < ApplicationRecord
   has_many :tags, through: :tags_gossips
   has_many :comments
 
-  before_destroy :delete_comments
-  before_destroy :delete_tags
+  before_destroy :destroy_comments_and_tags
 
   private
 
-  def delete_comments
-    comments.destroy_all
-  end
-
-  def delete_tags
-    tags.destroy_all
+  def destroy_comments_and_tags
+    self.comments.destroy_all
+    self.tags.destroy_all
   end
   
 end
