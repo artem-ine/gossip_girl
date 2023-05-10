@@ -21,5 +21,34 @@ class GossipsController < ApplicationController
       render :new, alert: 'Gossip could not be created.'
     end
   end
+
+  def edit
+    @id = params[:id]
+    @gossip = Gossip.find(params[:id])
+  end
+  
+  
+  def update
+    puts params.inspect
+    @gossip = Gossip.find(params[:id])
+    if @gossip.update(gossip_params)
+      redirect_to gossip_path(@gossip), flash: { success: 'Gossip was successfully edited.' }
+    else
+      render :edit, alert: 'Gossip could not be edited'
+    end
+  end
+
+  def destroy
+    @id = params[:id]
+    @gossip = Gossip.find(params[:id])
+    @gossip.destroy
+    redirect_to welcome_path(@id), flash: { success: 'Gossip was successfully deleted.' }
+  end
+
+  private
+  
+  def gossip_params
+    params.require(:gossip).permit(:title, :content)
+  end
     
 end
