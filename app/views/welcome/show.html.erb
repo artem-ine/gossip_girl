@@ -20,7 +20,9 @@
             <a class="navbar-brand js-scroll-trigger">
                 <span class="d-block d-lg-none">Gossip Girl</span>
                 <span class="d-none d-lg-block">
-                  <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="<%= asset_path('profile.jpeg') %>" alt="..." />
+                  <div class="img-profile-container">
+                    <img class="img-profile rounded-circle mx-auto mb-2" src="<%= asset_path('one.jpeg') %>" alt="...">
+                  </div>
                 </span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -55,13 +57,12 @@
                     Welcome,
                     <span class="text-primary"><%= @id %></span>
                   </h1>
-                  <div class="subheading mb-5">Wanna add yours? Go <%= link_to "here", new_gossip_path %> to spill the tea!</div>
+                  <div class="subheading mb-5">Have something to say? Go <%= link_to "here", new_gossip_path %> to spill the tea!</div>
                     <p class="lead mb-5">Here's all the gossips we've gathered:
                     <div class="row">
                       <% @gossips.each do |gossip| %>
                         <div class="col-md-4">
                           <div class="card mb-4">
-                            <img class="card-img-top" src="<%= asset_path('one.jpg') %>" alt="Card image cap">
                               <div class="card-body">
                                 <h5 class="card-title"><%= gossip.title %></h5>
                                 <p class="card-text"><small class="text-muted">Posted by <%= link_to gossip.user.first_name, user_path(gossip.user) %>, in <%= link_to gossip.user.city.name, city_path(gossip.user.city_id) %>. 

@@ -13,14 +13,13 @@ require 'faker'
   city = City.create!(name: Faker::Nation.capital_city, zip_code: Faker::Address.postcode)
 end 
 
-User.create(first_name: "Anon", last_name: "Ymous", email: "anon@anon.com", description: "the secret i'll never tell", city: City.order("RANDOM()").first, age: "XX", password: "test")
 
-2.times do 
+5.times do 
   user = User.create!(
     first_name: Faker::Name.unique.first_name,
     last_name: Faker::Name.unique.last_name,
     email: Faker::Internet.email,
-    description: Faker::Lorem.sentence(word_count: 3, supplemental: true, random_words_to_add: 10),
+    description: Faker::Quote.famous_last_words,
     city: City.order("RANDOM()").first, 
     age: Faker::Number.within(range: 21..101),
     password: "test"
@@ -28,11 +27,31 @@ User.create(first_name: "Anon", last_name: "Ymous", email: "anon@anon.com", desc
 end 
 
 gossips = []
-100.times do |index|
+10.times do |index|
   user = User.order("RANDOM()").first
   gossip = Gossip.create(
-    title: Faker::Lorem.sentence(word_count: 2),
-    content: Faker::Lorem.sentence(word_count: 3, supplemental: true, random_words_to_add: 10),
+    title: Faker::Quotes::Shakespeare.hamlet,
+    content: Faker::TvShows::BojackHorseman.quote,
+    user: user
+  )
+  gossips << gossip
+end 
+
+10.times do |index|
+  user = User.order("RANDOM()").first
+  gossip = Gossip.create(
+    title: Faker::Quotes::Shakespeare.as_you_like_it,
+    content: Faker::Movies::LordOfTheRings.quote,
+    user: user
+  )
+  gossips << gossip
+end 
+
+10.times do |index|
+  user = User.order("RANDOM()").first
+  gossip = Gossip.create(
+    title: Faker::Quotes::Shakespeare.romeo_and_juliet_quote,
+    content: Faker::Movies::StarWars.quote,
     user: user
   )
   gossips << gossip
@@ -64,11 +83,21 @@ end
 end
 
 
-100.times do |index|
+20.times do |index|
   user = User.order("RANDOM()").first
   gossip = Gossip.order("RANDOM()").last
   comment = Comment.create(
-    content: Faker::Lorem.sentence(word_count: 10, supplemental: true, random_words_to_add: 50),
+    content: Faker::TvShows::RuPaul.quote,
+    user_id: user.id,
+    gossip_id: gossip.id
+  )
+end
+
+20.times do |index|
+  user = User.order("RANDOM()").first
+  gossip = Gossip.order("RANDOM()").last
+  comment = Comment.create(
+    content: Faker::TvShows::TwinPeaks.quote,
     user_id: user.id,
     gossip_id: gossip.id
   )
