@@ -34,20 +34,21 @@
             <!-- About-->
             <section class="resume-section" id="about">
                 <div class="resume-section-content">
+
+                  <% if flash[:user_success] %>
+                    <div class="alert alert-success" role="alert">
+                      <%= flash[:user_success] %>
+                    </div>
+                  <% end %>
+
                     <h1 class="mb-0">
                         Hello
                         <span class="text-primary">You</span>
                     </h1>
-                    <p class="lead mb-5">
-                      <%= form_tag welcome_greet_path, method: :get do %>
-                      <%= label_tag :id, 'What is your name?' %>
-                      <br/>
-                      <br/>
-                      <%= text_field_tag :id, nil, class: "form-control", required: true, style: "width: 200px;" %>
-                      <br/>
-                      <%= submit_tag 'Submit', class: 'btn btn-primary' %>
-                      <% end %>
-                    </p>
+                    <br/>
+                    <br/>
+                    <p><%= link_to "LOG IN", new_session_path, class: 'btn btn-primary' =%></p>
+                    <p><%= link_to "SIGN UP", new_user_path, class: 'btn btn-primary' %></p>
                 </div>
             </section>
         </div>

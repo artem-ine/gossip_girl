@@ -13,16 +13,17 @@ require 'faker'
   city = City.create!(name: Faker::Nation.capital_city, zip_code: Faker::Address.postcode)
 end 
 
-User.create(first_name: "Anon", last_name: "Ymous", email: "anon@anon.com", description: "the secret i'll never tell", city: City.order("RANDOM()").first, age: "XX")
+User.create(first_name: "Anon", last_name: "Ymous", email: "anon@anon.com", description: "the secret i'll never tell", city: City.order("RANDOM()").first, age: "XX", password: "test")
 
-50.times do 
+2.times do 
   user = User.create!(
     first_name: Faker::Name.unique.first_name,
     last_name: Faker::Name.unique.last_name,
     email: Faker::Internet.email,
     description: Faker::Lorem.sentence(word_count: 3, supplemental: true, random_words_to_add: 10),
     city: City.order("RANDOM()").first, 
-    age: Faker::Number.within(range: 21..101)
+    age: Faker::Number.within(range: 21..101),
+    password: "test"
   )
 end 
 
