@@ -46,8 +46,11 @@
                 <div class="subheading mb-5"> by <%= link_to @gossip.user.first_name, user_path(@gossip.user) %>, from <%= link_to @gossip.user.city.name, city_path(@gossip.user.city_id)%></div>
                 <p class="lead mb-5"><%= @gossip.content %></p>
                 
-                <p><%= link_to "EDIT", edit_gossip_path, class: 'btn btn-primary' =%></p>
-                <p><%= button_to "DELETE", gossip_path(@gossip), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-primary' %></p>
+                <% if current_user && current_user == @gossip.user %>
+                  <p><%= link_to "EDIT", edit_gossip_path, class: 'btn btn-primary' =%></p>
+                  <p><%= button_to "DELETE", gossip_path(@gossip), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-primary' %></p>
+                <% end %>
+
                 <div class="subheading mb-5">Have something to say? Go <%= link_to "here", new_comment_path(gossip_id: @gossip.id) %> to add a comment!</div>
                 <div class="row">
                   <% @gossip.comments.each do |comment| %>
@@ -62,8 +65,11 @@
                               in <%= link_to comment.user.city.name, city_path(comment.user.city_id) %>
                             </small>
                           </p>
-                          <p><%= link_to "EDIT", edit_comment_path(comment), class: 'btn btn-primary' =%></p>
-                          <p><%= button_to "DELETE", comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-primary' %></p>
+                          
+                          <% if current_user && current_user == comment.user %>
+                            <p><%= link_to "EDIT", edit_comment_path(comment), class: 'btn btn-primary' =%></p>
+                            <p><%= button_to "DELETE", comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-primary' %></p>
+                          <% end %>
 
                         </div>
                       </div>

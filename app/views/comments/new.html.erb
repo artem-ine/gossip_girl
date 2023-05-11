@@ -42,6 +42,7 @@
                       <div class="subheading mb-5">Submit it blank at your own risk.</div>
                     <p class="lead mb-5">
                     <%= form_with url: comments_path, method: :post do |form| %>
+                    
                         <%= form.hidden_field :gossip_id, value: @gossip.id %>
                             <% if @comment.errors.any? %>
                             <div class="alert alert-danger">
