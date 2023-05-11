@@ -1,24 +1,29 @@
 class CommentsController < ApplicationController
+  
   def edit
     @id = params[:id]
     @comment = Comment.find(params[:id])
   end
 
+  
   def new
     @gossip = Gossip.find(params[:gossip_id])
     @comment = Comment.new(gossip_id: params[:gossip_id])
     render :new
   end
 
+
   def create
     puts params.inspect
     @id = params[:id]
+    @gossip = Gossip.find(params[:gossip_id])
     @comment = Comment.new(content: params[:content], user: current_user, gossip_id: params[:gossip_id])
   
     if @comment.save # essaie de sauvegarder en base @gossip
       redirect_to gossip_path(@comment.gossip_id), flash: { success: 'Comment was successfully created.' }
     else
-      render :new, alert: 'Comment could not be created.'
+      flash.now[:alert] = 'Comment cannot be blank.'
+      render :new
     end
   end
 
