@@ -10,7 +10,7 @@ class LikesController < ApplicationController
       flash: { like_success: 'You liked this gossip.' }
     else
       redirect_to gossip_path(@like.gossip_id), 
-      flash: { like_fail: 'The like button did not work!' }
+      flash: { like_fail: 'You have already liked this gossip. We get it.' }
     end
   end
 
