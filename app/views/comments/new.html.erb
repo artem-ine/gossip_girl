@@ -50,6 +50,7 @@
                 <%= form_with url: comments_path, method: :post do |form| %>
 
                 <%= form.hidden_field :gossip_id, value: @gossip.id %>
+                
                 <% if @comment.errors.any? %>
                 <div class="alert alert-danger">
                   <ul>
