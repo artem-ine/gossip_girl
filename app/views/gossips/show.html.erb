@@ -106,7 +106,7 @@
                     <label class="form-label" for="addANote">Have something to say? Go <%= link_to "here", new_comment_path(gossip_id: @gossip.id) %> to add a comment!</label>
                   </div>
                   
-                  <% @gossip.comments.each do |comment| %>
+                  <% @gossip.comments.reverse_each do |comment| %>
                     <div class="card">
                       <div class="card-body">
                         <p><%= comment.content %></h5></p>
