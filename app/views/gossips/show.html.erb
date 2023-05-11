@@ -54,8 +54,10 @@
           <h4 class="mb-0"><%= @gossip.title %></h4>
           <div class="subheading mb-5"> by <%= link_to @gossip.user.first_name, user_path(@gossip.user) %>, from <%= link_to @gossip.user.city.name, city_path(@gossip.user.city_id)%></div>
           <p class="lead mb-3"><%= @gossip.content %></p>
+          
+          <small class="text-muted"><%= @gossip.likes.count %> like(s).</small>
 
-          <div class="d-flex">
+          <div class="d-flex mt-2">
             <%= form_with url: likes_path, method: :post, local: true do |form| %>
               <%= form.hidden_field :gossip_id, value: @gossip.id %>
               <%= form.submit "LIKE", class: "btn btn-sm btn-outline-primary me-2" %>
