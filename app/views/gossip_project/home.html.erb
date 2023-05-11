@@ -41,6 +41,13 @@
                     </div>
                   <% end %>
 
+                  <% if flash[:log_out_success] %>
+                    <div class="alert alert-success" role="alert">
+                      <%= flash[:log_out_success] %>
+                    </div>
+                  <% end %>
+
+
                     <h1 class="mb-0">
                         Hello
                         <span class="text-primary">You</span>
