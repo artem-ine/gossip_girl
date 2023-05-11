@@ -18,5 +18,6 @@ Rails.application.routes.draw do
   resources :users
   resources :comments
   resources :sessions
+  resources :likes
 
 end

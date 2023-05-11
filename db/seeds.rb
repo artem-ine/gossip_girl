@@ -102,3 +102,10 @@ end
     gossip_id: gossip.id
   )
 end
+
+50.times do
+  user = User.all.sample
+  gossip = Gossip.all.sample
+  
+  like = Like.create(user: user, gossip: gossip)
+end

@@ -55,6 +55,39 @@
           <div class="subheading mb-5"> by <%= link_to @gossip.user.first_name, user_path(@gossip.user) %>, from <%= link_to @gossip.user.city.name, city_path(@gossip.user.city_id)%></div>
           <p class="lead mb-3"><%= @gossip.content %></p>
 
+          <div class="d-flex">
+            <%= form_with url: likes_path, method: :post, local: true do |form| %>
+              <%= form.hidden_field :gossip_id, value: @gossip.id %>
+              <%= form.submit "LIKE", class: "btn btn-sm btn-outline-primary me-2" %>
+            <% end %>
+          
+              <% if current_user && @gossip.likes.exists?(user_id: current_user.id) %>
+                <%= button_to "UNLIKE", like_path(@gossip.likes.find_by(user_id: current_user.id)), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-outline-danger" %>
+              <% end %>
+          </div>
+
+          <br/>
+          <br/>
+
+          <% if flash[:like_success] %>
+            <div class="alert alert-success" role="alert">
+            <%= flash[:like_success] %>
+            </div>
+          <% end %>
+
+          <% if flash[:like_fail] %>
+            <div class="alert alert-danger" role="alert">
+            <%= flash[:like_fail] %>
+            </div>
+          <% end %>
+
+          <% if flash[:dislike] %>
+            <div class="alert alert-success" role="alert">
+            <%= flash[:dislike] %>
+            </div>
+          <% end %>
+
+
           <% if current_user && current_user == @gossip.user %>
             <div class="d-flex mb-5">
               <%= link_to "EDIT", edit_gossip_path, class: "btn btn-sm btn-outline-primary me-2" =%>
@@ -64,7 +97,7 @@
 
 
           <div class="row d-flex justify-content-left">
-            <div class="col-md-10 mt-5 col-lg-12">
+            <div class="col-md-10 col-lg-12">
               <div class="card shadow-0 border" style="background-color: #f0f2f5;">
                 <div class="card-body p-4">
                   <div class="form-outline mb-2">
@@ -79,7 +112,7 @@
                         <div class="d-flex justify-content-between">
                           <div class="d-flex flex-row align-items-center">
                             <img src="https://as1.ftcdn.net/v2/jpg/00/57/04/58/1000_F_57045887_HHJml6DJVxNBMqMeDqVJ0ZQDnotp5rGD.jpg" alt="avatar" width="25" height="25" />
-                            <p class="small mb-0 ms-2">Posted by <%= link_to comment.user.first_name, user_path(comment.user) %>, in <%= link_to comment.user.city.name, city_path(comment.user.city_id) %></p>
+                            <p class="small mb-0 ms-2">Posted by <%= link_to comment.user.first_name, user_path(comment.user) %>, in <%= link_to comment.user.city.name, city_path(comment.user.city_id) %>.</p>
                           </div>
 
                           <div class="d-flex flex-row align-items-center">
@@ -101,7 +134,7 @@
           </div>
       </section>
     </div>
-    
+
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
   </body>

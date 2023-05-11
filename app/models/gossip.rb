@@ -7,6 +7,8 @@ class Gossip < ApplicationRecord
   has_many :tags, through: :tags_gossips
   has_many :comments
 
+  has_many :likes
+
   before_destroy :destroy_comments_and_tags
 
   private
