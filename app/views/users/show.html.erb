@@ -43,7 +43,7 @@
     <div class="container-fluid p-0">
       <section class="resume-section" id="about">
         <div class="resume-section-content">
-          <h1 class="mb-0"><%= @user.first_name %>'s<span class="text-primary">Profile</span></h1>
+          <h1 class="mb-0"><%= @user.first_name %>'s <span class="text-primary">Profile</span></h1>
           <div class="subheading mb-5">Snoop on their location <%= link_to "here", city_path(@user.city_id) %>.</div>
             <p class="lead mb-5">We're snitching. Here's everything we know about <%= @user.first_name %>:
               <p><em>First name:</em> <%= @user.first_name %></p>
