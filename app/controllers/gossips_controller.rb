@@ -13,10 +13,10 @@ class GossipsController < ApplicationController
   def create
     puts params.inspect
     @id = params[:id]
-    @gossip = Gossip.new(title: params[:title], content: params[:content], user: User.find_by(first_name: "Anon"))
+    @gossip = Gossip.new(title: params[:title], content: params[:content], user: current_user)
   
     if @gossip.save # essaie de sauvegarder en base @gossip
-      redirect_to welcome_path(@id), flash: { gossip_success: 'Gossip was successfully created.' }
+      redirect_to welcome_path(current_user.first_name), flash: { gossip_success: 'Gossip was successfully created.' }
     else
       render :new, alert: 'Gossip could not be created.'
     end
@@ -42,7 +42,7 @@ class GossipsController < ApplicationController
     @id = params[:id]
     @gossip = Gossip.find(params[:id])
     @gossip.destroy
-    redirect_to welcome_path(@id), flash: { success: 'Gossip was successfully deleted.' }
+    redirect_to welcome_path(current_user.first_name), flash: { success: 'Gossip was successfully deleted.' }
   end
 
   private

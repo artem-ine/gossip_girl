@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       # redirige où tu veux, avec un flash ou pas
-      redirect_to welcome_path(User.find_by(id: session[:user_id]).first_name),
+      redirect_to welcome_path(current_user.first_name),
       flash: { log_in_success: 'Log in successful' }
 
     else
