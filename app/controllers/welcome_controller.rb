@@ -6,7 +6,7 @@ class WelcomeController < ApplicationController
 
   def show
     @id = params[:id]
-    @gossips = Gossip.all
+    @gossips = Gossip.order(created_at: :desc)
   end
 
 end
